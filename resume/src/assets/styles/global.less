@@ -74,3 +74,27 @@ a {
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
+
+// Animations
+
+.slide-fade-enter-active {
+    transition: all .4s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active for <2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
