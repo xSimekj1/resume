@@ -5,8 +5,7 @@
         <section
         v-for="section in content.sections"
         :key="section.type"
-        @click="openSection(section.type)"
-        :class="section.type > sectionActive ? 'open' : 'closed'">
+        @click="openSection(section.type)">
           <h2 class="section-title">{{section.title}}</h2>
           <div class="entry" v-for="entry in section.entries" :key="entry.id">
             <div class="col">
@@ -16,9 +15,9 @@
                 <h4 class="entry-subtitle" v-if="entry.subtitle">{{entry.subtitle}}</h4>
               </div>
               <p class="text" v-for="paragraph in entry.text" :key="paragraph">
-                <ion-icon v-if="section.type == 'school'" name="school-outline"></ion-icon>
-                <ion-icon v-if="section.type == 'work'" name="desktop-outline"></ion-icon>
-                <ion-icon v-if="section.type == 'volunteering'" name="football-outline"></ion-icon>
+                <ion-icon v-if="section.type == 'school'" name="school-outline"/>
+                <ion-icon v-if="section.type == 'work'" name="desktop-outline"/>
+                <ion-icon v-if="section.type == 'volunteering'" name="football-outline"/>
                 {{paragraph}}
                 </p>
             </div>
@@ -52,6 +51,7 @@ export default {
 
 <style lang="less">
 @import './../assets/styles/global.less';
+.about {
   .content {
     height: 100vh;
     padding-left: 350px;
@@ -78,65 +78,58 @@ export default {
     .content-container {
       overflow-y: scroll;
       height: calc(100vh - 100px);
-     section {
-      display: flex;
-      flex-direction: column;
-      color: @dark-violet;
-      padding: 25px 0;
-      border-bottom: 1px solid @gray;
-      .section-title {
-        font-size: 40px;
-      }
-      .entry {
+      section {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 80%;
-        padding-bottom: 25px;
-        .entry-title {
-          font-size: 30px;
-          margin: 0;
+        flex-direction: column;
+        color: @dark-violet;
+        padding: 25px 0;
+        border-bottom: 1px solid @gray;
+        .section-title {
+          font-size: 40px;
         }
-        .entry-subtitle {
-          font-size: 24px;
-          margin: 0;
-          color: @grayish-violet;
-        }
-        .text {
-          margin: 5px 0;
+        .entry {
           display: flex;
-          align-items: center;
-          ion-icon {
-            margin-right: 10px;
-            min-width: 20px;
-            max-width: 20px;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 80%;
+          padding-bottom: 25px;
+          .entry-title {
+            font-size: 30px;
+            margin: 0;
+          }
+          .entry-subtitle {
+            font-size: 24px;
+            margin: 0;
+            color: @grayish-violet;
+          }
+          .text {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            ion-icon {
+              margin-right: 10px;
+              min-width: 20px;
+              max-width: 20px;
+            }
+          }
+          .image {
+            display: flex;
+            align-items: center;
+            img {
+              max-height: 150px;
+              max-width: 300px;
+              transition: opacity 0.3s;
+              transition-delay: 0.4s;
+              -webkit-transition-delay: 1s;
+              -webkit-transition: opacity 0.3s;
+              opacity: 1;
+            }
           }
         }
-        .image {
-          display: flex;
-          align-items: center;
-          img {
-            max-height: 150px;
-            max-width: 300px;
-          }
-        }
       }
-      &.open {
-        .entry {
-          height: 225px;
-          transition: all 0.5s ease-in-out;
-          overflow: hidden;
-        }
-      }
-      &.closed {
-        .entry {
-          height: 0;
-          display: none;
-        }
-      }
-     }
     }
   }
+}
 
 </style>
 

@@ -18,15 +18,18 @@
       </div>
 
       <div class="nav">
-        <router-link to="/Home">O mne</router-link>
-        <router-link to="/about">Kariera</router-link>
-        <router-link to="/">Hobby</router-link>
+        <router-link to="/About">O mne</router-link>
+        <router-link to="/Skills">Kariera</router-link>
+        <router-link to="/FreeTime">Hobby</router-link>
       </div>
 
       <div class="media">
-        <ion-icon name="logo-facebook"></ion-icon>
+        <a href="https://www.instagram.com/velky_simi/?hl=sk" target="_blank" rel="noopener noreferrer">
         <ion-icon name="logo-instagram"></ion-icon>
-        <ion-icon name="logo-github"></ion-icon>
+        </a>
+        <a href="https://github.com/xSimekj1" target="_blank" rel="noopener noreferrer">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
       </div>
 
       <span class="trademark">
@@ -47,6 +50,7 @@ export default {
 @import './../assets/styles/global.less';
 
   .menu {
+    z-index: 2;
     position: fixed;
     top: 0;
     display: flex;
@@ -60,6 +64,10 @@ export default {
     box-shadow: 1px 0px 5px 0px rgba(140,140,140,1);
     a {
       color: @grayish-violet;
+      transition: 0.4s;
+      &:hover {
+        color: @cyan;
+      }
     }
   }
 
@@ -91,11 +99,17 @@ export default {
     }
   }
   .nav {
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin-top: 50px;
     a {
-      margin: 10px 0;
+      font-weight: bold;
+      padding: 20px 0;
+      border-bottom: 1px solid;
+      &:nth-of-type(1) {
+        border-top: 1px solid;
+      }
     }
   }
 
@@ -103,7 +117,7 @@ export default {
     position: absolute;
     width: 160px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     bottom: 70px;
     ion-icon {
       font-size: 36px;
